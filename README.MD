@@ -1,19 +1,21 @@
-# 💻 Programación 1
+# 👋 ¡Hola!
 
-**Tecnicatura Universitaria en Programación**  
-📍 _Universidad Tecnológica Nacional_
+## 🙋‍♂️ Sobre Mí
 
-## ✨ Estudiante
+### 📌 Presentación
 
-- **Nombre:** Garay, Pablo
-- **Comisión:** M2025-14
+Hola, mi nombre es **Pablo Garay**. Soy estudiante de la **Tecnicatura Universitaria en Programación (TUP)** en la UTN. Actualmente, trabajo como **desarrollador backend SSR**, con experiencia en **NestJS, TypeScript, Sequelize y PostgreSQL**.
 
-## 📂 Descripción del Repositorio
+### 🎯 Motivación
 
-Este repositorio almacena todas los trabajos prácticos realizados durante la cursada de **Programación 1**.
+Estoy cursando la carrera con el objetivo de fortalecer mis bases en programación y mejorar mis conocimientos. Me apasiona la tecnología y la **democratización de la educación a través de la virtualidad**.
 
-📌 **Estructura del repositorio:**
+### ⏳ Organización y Estudio
 
-- Cada trabajo está organizado en carpetas individuales.
-- Los archivos de código fuente (`.py`) incluyen comentarios y estructura adecuada.
-- Se busca mantener un código limpio, ordenado y bien documentado.
+Dado que trabajo y estudio al mismo tiempo, organizo mi tiempo de manera eficiente. Mi objetivo es mantener un equilibrio entre el estudio y mis responsabilidades laborales.
+
+### 🚀 Expectativas
+
+Espero aprender y profundizar en los temas de la materia, aplicando los conocimientos adquiridos en proyectos reales y en mi desarrollo profesional.
+
+¡Gracias por su tiempo! 😊
