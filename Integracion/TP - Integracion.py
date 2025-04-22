@@ -1,4 +1,5 @@
 # Calculadora binaria
+import sys
 
 def son_todos_digitos(numero: str) -> bool: 
     """
@@ -177,7 +178,7 @@ def sumar(numeros: list[str]):
             carry = 0
 
         if carry > 0:
-            sumando(sumando_con_carry(binario1[i], "1"), binario2[i]) # Preguntar porque ese 1 en el argumento
+            sumando(sumando_con_carry(binario1[i], "1"), binario2[i]) 
         else:
             sumando(binario1[i], binario2[i])
 
@@ -215,6 +216,16 @@ def complementoA2(binario2: str):
     return binarioA2
 
 def restar(numeros: list[str]):
+    """
+    Resta dos números binarios representados como cadenas.
+
+    Args:
+        numeros (list[str]): Lista con dos cadenas que representan números binarios.
+
+    Returns:
+        str: Resultado de la resta en binario y en caso de resultado negativo, su expresion en valor absoluto.
+    """
+
     binario1: str = numeros[0]
     binario2: str = numeros[1]
     resultado : str = ""
@@ -232,7 +243,7 @@ def restar(numeros: list[str]):
 
 
 
-# def resta():
+
 # def multiplicar():
 # def dividir():
 
@@ -244,13 +255,16 @@ def calculadora():
     Menú principal de la calculadora binaria.
     Permite seleccionar la operación y solicita los números binarios al usuario.
     """
-    print("Elije la operacion a realizar del siguiente menu: ")
-    print("1 - Sumar \n2 - Resta \n3 - Multiplicar \n4 - Dividir")
-    operacion: int = int(input("Elije la operacion: "))
-    lista_de_operadores: tuple = (1, 2, 3, 4)
+    print("\nElije la operacion a realizar del siguiente menu:\n ")
+    print("1 - Sumar \n2 - Resta \n3 - Multiplicar \n4 - Dividir\n 5 - Salir")
+    operacion: int = int(input("\nIngrese la operacion elegida: "))
+    lista_de_operadores: tuple = (1, 2, 3, 4, 5)
     if operacion not in lista_de_operadores:
         print("Opcion no valida, intente de nuevo")
         return
+    elif operacion == lista_de_operadores[4]:
+        sys.exit()
+
 
     numeros: list = []
     for i in range(0, 2):
@@ -264,6 +278,7 @@ def calculadora():
         print("Multiplicando")
     elif operacion == lista_de_operadores[3]:
         print("Dividiendo")
+    
 
 calculadora()
 
