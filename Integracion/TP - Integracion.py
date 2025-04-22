@@ -55,10 +55,10 @@ def validar_numero_binario(mensaje: str) -> str:
     num: str = input(mensaje)
 
     if not (tiene_longitud(num) and son_todos_digitos(num)):
-        return validar_numero_binario("El numero ingresado no es valido, ingrese otro")
+        return validar_numero_binario("El numero ingresado no es valido, ingrese otro: ")
 
     if not (es_binario(num)):
-        return validar_numero_binario("El numero ingresado no es binario, ingrese otro")
+        return validar_numero_binario("El numero ingresado no es binario, ingrese otro: ")
 
     return num
 
@@ -93,6 +93,23 @@ def rellenar_con_ceros_izquierda(numero: str, longitud: int) -> str:
     numero_invertido += longitud * "0"
     return numero_invertido[::-1]
 
+def igualar_numeros(binario1: str, binario2: str):
+    """
+    Verifica si los dos numeros ingresados por el usuario tienen la misma cantidad de bits 
+    caso contrario, los iguala.
+
+    Args: binario1(str) y binario2(str) numeros binarios como cadenas
+
+    Returns:
+        str: Los dos número binario recibidos, igualados en cantidad de bits.
+    """
+    longitud = abs(len(binario1) - len(binario2))
+    if len(binario1) > len(binario2):
+        binario2 = rellenar_con_ceros_izquierda(binario2, longitud)
+    else:
+        binario1 = rellenar_con_ceros_izquierda(binario1, longitud)
+    return (binario1, binario2)
+
 def sumar(numeros: list[str]):
     """
     Suma dos números binarios representados como cadenas.
@@ -108,11 +125,7 @@ def sumar(numeros: list[str]):
     resultado : str = ""
     carry: int = 0
 
-    longitud = abs(len(binario1) - len(binario2))
-    if len(binario1) > len(binario2):
-        binario2 = rellenar_con_ceros_izquierda(binario2, longitud)
-    else:
-        binario1 = rellenar_con_ceros_izquierda(binario1, longitud)
+    binario1, binario2 = igualar_numeros(binario1, binario2)
 
     def sumando(num1: str, num2: str) -> None:
         """
@@ -164,7 +177,7 @@ def sumar(numeros: list[str]):
             carry = 0
 
         if carry > 0:
-            sumando(sumando_con_carry(binario1[i], "1"), binario2[i])
+            sumando(sumando_con_carry(binario1[i], "1"), binario2[i]) # Preguntar porque ese 1 en el argumento
         else:
             sumando(binario1[i], binario2[i])
 
@@ -182,9 +195,49 @@ def sumar(numeros: list[str]):
 
     return resultado[::-1]
 
+def complementoA2(binario2: str):
+    """
+    Recibe un binario como cadena, lo invierte y suma 1 
+
+    Arg: binario2(str) numero binario como cadena
+
+    Returns:
+            str: El complemento A2 del numero dado.
+    """
+    binarioA1 = ""
+    for i in range(len(binario2)):
+        if int(binario2[i]) == 0:
+            binarioA1 += "1"
+        else:
+            binarioA1 += "0"
+
+    binarioA2 = sumar([binarioA1, "1"])
+    return binarioA2
+
+def restar(numeros: list[str]):
+    binario1: str = numeros[0]
+    binario2: str = numeros[1]
+    resultado : str = ""
+
+    binario1, binario2 = igualar_numeros(binario1, binario2)
+    if binario1 > binario2:
+        resultado = sumar([binario1, complementoA2(binario2)])
+        if len(resultado) > len(binario2):
+            resultado = resultado[1:]
+            return f"El resultado de la resta es {resultado}"
+    else:
+         resultado = sumar([binario1, complementoA2(binario2)])
+         resultado1 = complementoA2(resultado[1:])
+         return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
+
+
+
 # def resta():
 # def multiplicar():
 # def dividir():
+
+
+
 
 def calculadora():
     """
@@ -204,9 +257,9 @@ def calculadora():
         numeros.append(validar_numero_binario(f"Ingrese el numero binario {i+1}: "))
 
     if operacion == lista_de_operadores[0]:
-        print(f"El resultado es: {sumar(numeros)}")
+        print(f"El resultado de la suma es: {sumar(numeros)}")
     elif operacion == lista_de_operadores[1]:
-        print("Restando")
+        print(f"{restar(numeros)}")
     elif operacion == lista_de_operadores[2]:
         print("Multiplicando")
     elif operacion == lista_de_operadores[3]:
