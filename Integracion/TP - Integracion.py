@@ -256,7 +256,7 @@ def calculadora():
     Permite seleccionar la operación y solicita los números binarios al usuario.
     """
     print("\nElije la operacion a realizar del siguiente menu:\n ")
-    print("1 - Sumar \n2 - Resta \n3 - Multiplicar \n4 - Dividir\n 5 - Salir")
+    print("1 - Sumar \n2 - Resta \n3 - Multiplicar \n4 - Dividir\n5 - Salir")
     operacion: int = int(input("\nIngrese la operacion elegida: "))
     lista_de_operadores: tuple = (1, 2, 3, 4, 5)
     if operacion not in lista_de_operadores:
