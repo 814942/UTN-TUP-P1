@@ -241,14 +241,8 @@ def restar(numeros: list[str]):
          resultado1 = complementoA2(resultado[1:])
          return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
 
-
-
-
 # def multiplicar():
 # def dividir():
-
-
-
 
 def calculadora():
     """
