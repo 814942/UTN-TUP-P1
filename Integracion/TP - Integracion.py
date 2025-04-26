@@ -241,7 +241,46 @@ def restar(numeros: list[str]):
          resultado1 = complementoA2(resultado[1:])
          return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
 
-# def multiplicar():
+def multiplicar(numeros: list[str]) -> str:
+    """
+    Multiplica dos números binarios representados como cadenas.
+
+    Args:
+        numeros (list[str]): Lista con dos cadenas que representan números binarios.
+
+    Returns:
+        str: Resultado de la multiplicación en binario.
+    """
+    binario1, binario2 = numeros
+    
+    # Inicializar el resultado con ceros
+    resultado = "0"
+    
+    # Invertir los números para facilitar el procesamiento
+    binario1 = binario1[::-1]
+    binario2 = binario2[::-1]
+    
+    # Para cada bit del segundo número
+    for i, bit in enumerate(binario2):
+        if bit == '1':
+            # Si el bit es 1, multiplicamos el primer número por 2^i
+            # Esto es equivalente a desplazar el primer número i posiciones a la izquierda
+            shifted = binario1 + "0" * i
+            # Sumamos el resultado parcial al total
+            resultado = sumar([resultado, shifted])
+
+    binario1: str = numeros[0]
+    binario2: str = numeros[1]
+    decimal1: int = convertir_a_decimal(binario1)
+    decimal2: int = convertir_a_decimal(binario2)
+    total: int = decimal1 * decimal2
+    resultado_decimal = convertir_a_decimal(resultado[::-1])
+    if total == resultado_decimal:
+        print("Binario verificado...")
+
+    # Invertir el resultado final para obtener el número en el orden correcto
+    return resultado[::-1]
+
 # def dividir():
 
 def calculadora():
@@ -269,10 +308,9 @@ def calculadora():
     elif operacion == lista_de_operadores[1]:
         print(f"{restar(numeros)}")
     elif operacion == lista_de_operadores[2]:
-        print("Multiplicando")
+        print(f"El resultado es: {multiplicar(numeros)}")
     elif operacion == lista_de_operadores[3]:
         print("Dividiendo")
-    
 
 calculadora()
 
