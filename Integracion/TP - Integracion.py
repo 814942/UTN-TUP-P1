@@ -186,13 +186,13 @@ def sumar(numeros: list[str]):
     if carry > 0:
         resultado += "1"
 
-    # Convertimos los binarios a decimales para verificar el resultado
+    # Verificación
     decimal1 = convertir_a_decimal(binario1)
     decimal2 = convertir_a_decimal(binario2)
     total = decimal1 + decimal2
     resultado_decimal = convertir_a_decimal(resultado[::-1])
     if total == resultado_decimal:
-        print("Binario verificado...")
+        print("Suma verificada...")
 
     return resultado[::-1]
 
@@ -235,11 +235,20 @@ def restar(numeros: list[str]):
         resultado = sumar([binario1, complementoA2(binario2)])
         if len(resultado) > len(binario2):
             resultado = resultado[1:]
-            return f"El resultado de la resta es {resultado}"
+            # return f"El resultado de la resta es {resultado}"
+            return resultado
     else:
-         resultado = sumar([binario1, complementoA2(binario2)])
-         resultado1 = complementoA2(resultado[1:])
-         return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
+        resultado = sumar([binario1, complementoA2(binario2)])
+        resultado1 = complementoA2(resultado[1:])
+        # return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
+        return resultado1
+
+    decimal1 = convertir_a_decimal(binario1)
+    decimal2 = convertir_a_decimal(binario2)
+    total = decimal1 - decimal2
+    resultado_decimal = convertir_a_decimal(resultado[::-1])
+    if total == resultado_decimal:
+        print("Resta verificada...")
 
 def multiplicar(numeros: list[str]) -> str:
     """
@@ -252,36 +261,114 @@ def multiplicar(numeros: list[str]) -> str:
         str: Resultado de la multiplicación en binario.
     """
     binario1, binario2 = numeros
-    
+
     # Inicializar el resultado con ceros
     resultado = "0"
-    
-    # Invertir los números para facilitar el procesamiento
-    binario1 = binario1[::-1]
-    binario2 = binario2[::-1]
-    
+
     # Para cada bit del segundo número
-    for i, bit in enumerate(binario2):
-        if bit == '1':
+    # for i, bit in enumerate(binario2):
+    for i in range(len(binario2)-1, -1, -1):
+        if binario2[i] == '1':
             # Si el bit es 1, multiplicamos el primer número por 2^i
             # Esto es equivalente a desplazar el primer número i posiciones a la izquierda
-            shifted = binario1 + "0" * i
+            shifted = binario1 + "0" * (len(binario2) - 1 - i)
+            # 1010 -> 0101 000
             # Sumamos el resultado parcial al total
             resultado = sumar([resultado, shifted])
 
+    # Verificación
     binario1: str = numeros[0]
     binario2: str = numeros[1]
     decimal1: int = convertir_a_decimal(binario1)
     decimal2: int = convertir_a_decimal(binario2)
     total: int = decimal1 * decimal2
-    resultado_decimal = convertir_a_decimal(resultado[::-1])
+    resultado_decimal = convertir_a_decimal(resultado)
     if total == resultado_decimal:
-        print("Binario verificado...")
+        print("Multiplicacion verificada...")
 
-    # Invertir el resultado final para obtener el número en el orden correcto
-    return resultado[::-1]
+    # Sacar el cero a la izquierda
+    return resultado.lstrip("0") or "0"
 
-# def dividir():
+def comparar_binarios(bin1: str, bin2: str) -> bool:
+    """
+    Compara dos binarios como cadenas.
+    Devuelve True si bin1 es mayor o igual a bin2.
+    """
+    bin1, bin2 = igualar_numeros(bin1, bin2)  # Igualamos las longitudes agregando ceros a la izquierda
+    return bin1 >= bin2  # Comparamos alfabéticamente (en binarios funciona)
+
+def restar_binarios(bin1: str, bin2: str) -> str:
+    """
+    Resta dos binarios (bin1 - bin2) directamente.
+    Asume que bin1 >= bin2.
+    """
+    bin1, bin2 = igualar_numeros(bin1, bin2)  # Igualamos las longitudes
+    resultado = ""  # Inicializamos el resultado vacío
+    carry = 0  # Inicializamos el acarreo (préstamo) en 0
+
+    # Recorremos de derecha a izquierda
+    for i in range(len(bin1)-1, -1, -1):
+        b1 = int(bin1[i])  # Obtenemos el bit de bin1
+        b2 = int(bin2[i])  # Obtenemos el bit de bin2
+
+        r = b1 - b2 - carry  # Calculamos la resta considerando el carry anterior
+
+        # Decidimos el bit de resultado y el nuevo carry
+        if r == 0:
+            resultado = "0" + resultado
+            carry = 0
+        elif r == 1:
+            resultado = "1" + resultado
+            carry = 0
+        elif r == -1:
+            resultado = "1" + resultado
+            carry = 1
+        elif r == -2:
+            resultado = "0" + resultado
+            carry = 1
+
+    # Quitamos ceros a la izquierda para normalizar el resultado
+    return resultado.lstrip('0') or "0"
+
+def dividir(numeros: list[str]) -> str:
+    """
+    Divide dos números binarios directamente sin convertir a decimal.
+    
+    Args:
+        numeros (list[str]): Lista con dos cadenas que representan números binarios.
+
+    Returns:
+        str: Resultado de la división en binario.
+    """
+    dividendo = numeros[0]  # Primer número binario
+    divisor = numeros[1]    # Segundo número binario
+
+    if divisor == "0":
+        return "Error: No se puede dividir por cero"  # Error si intentan dividir por cero
+
+    cociente = ""  # Iniciamos el cociente vacío
+    resto = ""     # Iniciamos el resto vacío
+
+    # Recorremos cada bit del dividendo
+    for bit in dividendo:
+        resto += bit  # Agregamos el bit actual al resto
+        resto = resto.lstrip('0') or "0"  # Quitamos ceros a la izquierda
+
+        if comparar_binarios(resto, divisor):
+            cociente += "1"  # Si el resto >= divisor, agregamos 1 al cociente
+            resto = restar_binarios(resto, divisor)  # Y restamos divisor al resto
+        else:
+            cociente += "0"  # Si no alcanza, agregamos 0 al cociente
+
+    # Verificación
+    dividendo_decimal: int = convertir_a_decimal(dividendo)
+    divisor_decimal: int = convertir_a_decimal(divisor)
+    resultado_decimal = convertir_a_decimal(cociente)
+    if dividendo_decimal // divisor_decimal == resultado_decimal:
+        print("División verificada...")
+
+    # Limpiamos ceros a la izquierda del cociente
+    return cociente.lstrip('0') or "0"
 
 def calculadora():
     """
@@ -310,8 +397,69 @@ def calculadora():
     elif operacion == lista_de_operadores[2]:
         print(f"El resultado es: {multiplicar(numeros)}")
     elif operacion == lista_de_operadores[3]:
-        print("Dividiendo")
+        print(f"El resultado es: {dividir(numeros)}")
 
 calculadora()
 
+# TEST CASES
 
+# Caso 1: Suma básica
+print("Caso 1: Suma básica")
+numeros = ["1010", "0101"]  # 10 + 5 = 15
+resultado = sumar(numeros)
+assert resultado == "1111", f"Error: Se esperaba '1111' pero obtuvo '{resultado}'"
+
+# Caso 2: Suma con carry
+print("Caso 2: Suma con carry")
+numeros = ["1111", "01"]  # 15 + 1 = 16
+resultado = sumar(numeros)
+assert resultado == "10000", f"Error: Se esperaba '10000' pero obtuvo '{resultado}'"
+
+# ---------------------- #
+
+# Caso 1: Resta básica
+print("Caso 1: Resta básica")
+numeros = ["1010", "0101"]  # 10 - 5 = 5
+resultado = restar(numeros)
+print(resultado)
+assert resultado == "0101", f"Error: Se esperaba '0101' pero obtuvo '{resultado}'"
+
+# Caso 2: Resta con resultado en valor absoluto
+print("Caso 2: Resta con resultado en valor absoluto")
+numeros = ["0011", "1001"]  # 3 - 9 = -6 (resultado en valor absoluto)
+resultado = restar(numeros)
+print(resultado)
+assert resultado == "110", f"Error: Se esperaba '110' pero obtuvo '{resultado}'"
+# assert resultado == "0110", f"Error: Se esperaba '0110' pero obtuvo '{resultado}'"
+
+# ---------------------- #
+
+# Caso 1: Multiplicación básica
+print("Caso 1: Multiplicación básica")
+numeros = ["1010", "0101"]  # 10 * 5 = 50
+resultado = multiplicar(numeros)
+print(resultado)
+assert resultado == "110010", f"Error: Se esperaba '110010' pero obtuvo '{resultado}'"
+
+# Caso 2: Multiplicación por 0
+print("Caso 2: Multiplicación por 0")
+numeros = ["1111", "0000"]  # 15 * 0 = 0
+resultado = multiplicar(numeros)
+print(resultado)
+assert resultado == "0", f"Error: Se esperaba '0' pero obtuvo '{resultado}'"
+
+# ---------------------- #
+
+# Caso 1: División básica
+print("Caso 1: División básica")
+numeros = ["1010", "0101"]  # 10 / 5 = 2
+resultado = dividir(numeros)
+print(resultado)
+assert resultado == "10", f"Error: Se esperaba '10' pero obtuvo '{resultado}'"
+
+# Caso 2: División con residuo
+print("Caso 2: División con residuo")
+numeros = ["1101", "0101"]  # 13 / 5 = 2 (resultado entero)
+resultado = dividir(numeros)
+print(resultado)
+assert resultado == "10", f"Error: Se esperaba '10' pero obtuvo '{resultado}'"
