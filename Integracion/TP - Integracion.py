@@ -231,17 +231,15 @@ def restar(numeros: list[str]):
     resultado : str = ""
 
     binario1, binario2 = igualar_numeros(binario1, binario2)
-    if binario1 > binario2:
+    if binario1 >= binario2:
         resultado = sumar([binario1, complementoA2(binario2)])
         if len(resultado) > len(binario2):
             resultado = resultado[1:]
-            # return f"El resultado de la resta es {resultado}"
-            return resultado
+            return resultado.lstrip('0') or "0"
     else:
         resultado = sumar([binario1, complementoA2(binario2)])
         resultado1 = complementoA2(resultado[1:])
-        # return f"El resultado es {resultado}. Como es un binario negativo, el valor absoluto es {resultado1} "
-        return resultado1
+        return resultado1.lstrip('0') or "0"
 
     decimal1 = convertir_a_decimal(binario1)
     decimal2 = convertir_a_decimal(binario2)
@@ -297,39 +295,6 @@ def comparar_binarios(bin1: str, bin2: str) -> bool:
     bin1, bin2 = igualar_numeros(bin1, bin2)  # Igualamos las longitudes agregando ceros a la izquierda
     return bin1 >= bin2  # Comparamos alfabéticamente (en binarios funciona)
 
-def restar_binarios(bin1: str, bin2: str) -> str:
-    """
-    Resta dos binarios (bin1 - bin2) directamente.
-    Asume que bin1 >= bin2.
-    """
-    bin1, bin2 = igualar_numeros(bin1, bin2)  # Igualamos las longitudes
-    resultado = ""  # Inicializamos el resultado vacío
-    carry = 0  # Inicializamos el acarreo (préstamo) en 0
-
-    # Recorremos de derecha a izquierda
-    for i in range(len(bin1)-1, -1, -1):
-        b1 = int(bin1[i])  # Obtenemos el bit de bin1
-        b2 = int(bin2[i])  # Obtenemos el bit de bin2
-
-        r = b1 - b2 - carry  # Calculamos la resta considerando el carry anterior
-
-        # Decidimos el bit de resultado y el nuevo carry
-        if r == 0:
-            resultado = "0" + resultado
-            carry = 0
-        elif r == 1:
-            resultado = "1" + resultado
-            carry = 0
-        elif r == -1:
-            resultado = "1" + resultado
-            carry = 1
-        elif r == -2:
-            resultado = "0" + resultado
-            carry = 1
-
-    # Quitamos ceros a la izquierda para normalizar el resultado
-    return resultado.lstrip('0') or "0"
-
 def dividir(numeros: list[str]) -> str:
     """
     Divide dos números binarios directamente sin convertir a decimal.
@@ -356,7 +321,7 @@ def dividir(numeros: list[str]) -> str:
 
         if comparar_binarios(resto, divisor):
             cociente += "1"  # Si el resto >= divisor, agregamos 1 al cociente
-            resto = restar_binarios(resto, divisor)  # Y restamos divisor al resto
+            resto = restar([resto, divisor])  # Y restamos divisor al resto
         else:
             cociente += "0"  # Si no alcanza, agregamos 0 al cociente
 
@@ -422,7 +387,7 @@ print("Caso 1: Resta básica")
 numeros = ["1010", "0101"]  # 10 - 5 = 5
 resultado = restar(numeros)
 print(resultado)
-assert resultado == "0101", f"Error: Se esperaba '0101' pero obtuvo '{resultado}'"
+assert resultado == "101", f"Error: Se esperaba '101' pero obtuvo '{resultado}'"
 
 # Caso 2: Resta con resultado en valor absoluto
 print("Caso 2: Resta con resultado en valor absoluto")
@@ -452,7 +417,7 @@ assert resultado == "0", f"Error: Se esperaba '0' pero obtuvo '{resultado}'"
 
 # Caso 1: División básica
 print("Caso 1: División básica")
-numeros = ["1010", "0101"]  # 10 / 5 = 2
+numeros = ["1010", "101"]  # 10 / 5 = 2
 resultado = dividir(numeros)
 print(resultado)
 assert resultado == "10", f"Error: Se esperaba '10' pero obtuvo '{resultado}'"
