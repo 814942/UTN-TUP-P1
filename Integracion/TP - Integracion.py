@@ -350,7 +350,6 @@ def calculadora():
     elif operacion == lista_de_operadores[4]:
         sys.exit()
 
-
     numeros: list = []
     for i in range(0, 2):
         numeros.append(validar_numero_binario(f"Ingrese el numero binario {i+1}: "))
@@ -428,3 +427,10 @@ numeros = ["1101", "0101"]  # 13 / 5 = 2 (resultado entero)
 resultado = dividir(numeros)
 print(resultado)
 assert resultado == "10", f"Error: Se esperaba '10' pero obtuvo '{resultado}'"
+
+# Caso 3: Divisor mas grande que dividendo
+print("Caso 3: Divisor mas grande que dividendo")
+numeros = ["1101", "111101"]  # 13 / 61 = 0,2131147540983607 (resultado entero)
+resultado = dividir(numeros)
+print(resultado)
+assert resultado == "0", f"Error: Se esperaba '0' pero obtuvo '{resultado}'"
