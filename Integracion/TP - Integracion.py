@@ -272,6 +272,7 @@ def calculadora():
         print("Multiplicando")
     elif operacion == lista_de_operadores[3]:
         print("Dividiendo")
+    
 
 calculadora()
 
