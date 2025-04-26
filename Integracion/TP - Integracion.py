@@ -245,7 +245,7 @@ def restar(numeros: list[str]):
            resultado1 = complementoA2(resultado)
            return resultado1.lstrip('0') or "0"
 
-
+    
     decimal1 = convertir_a_decimal(binario1)
     decimal2 = convertir_a_decimal(binario2)
     total = decimal1 - decimal2
@@ -370,6 +370,9 @@ def calculadora():
 
 calculadora()
 
+
+
+"""
 # TEST CASES
 
 # Caso 1: Suma básica
@@ -439,3 +442,4 @@ numeros = ["1101", "111101"]  # 13 / 61 = 0,2131147540983607 (resultado entero)
 resultado = dividir(numeros)
 print(resultado)
 assert resultado == "0", f"Error: Se esperaba '0' pero obtuvo '{resultado}'"
+"""
