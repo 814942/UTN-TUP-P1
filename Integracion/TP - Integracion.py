@@ -238,8 +238,13 @@ def restar(numeros: list[str]):
             return resultado.lstrip('0') or "0"
     else:
         resultado = sumar([binario1, complementoA2(binario2)])
-        resultado1 = complementoA2(resultado[1:])
-        return resultado1.lstrip('0') or "0"
+        if len(resultado) > len(binario2):
+            resultado1 = complementoA2(resultado[1:])
+            return resultado1.lstrip('0') or "0"
+        else:
+           resultado1 = complementoA2(resultado)
+           return resultado1.lstrip('0') or "0"
+
 
     decimal1 = convertir_a_decimal(binario1)
     decimal2 = convertir_a_decimal(binario2)
