@@ -279,13 +279,7 @@ def restar(numeros: list[str]):
            print(comprobar(binario1,binario2,resultado))
            return resultado1.lstrip('0') or "0"
 
-    
-    decimal1 = convertir_a_decimal(binario1)
-    decimal2 = convertir_a_decimal(binario2)
-    total = decimal1 - decimal2
-    resultado_decimal = convertir_a_decimal(resultado[::-1])
-    if total == resultado_decimal:
-        print("Resta verificada...")
+        
 
 def multiplicar(numeros: list[str]) -> str:
     """
