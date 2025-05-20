@@ -79,6 +79,25 @@ def convertir_a_decimal(numero: str) -> int:
         decimal += int(numero[i-1]) * (2 ** (len(numero)-i))
     return decimal
 
+def convertir_a_dec_binario_neg(binario: str) -> int:
+    """
+    Convierte una cadena binaria negativo, a su valor decimal.
+
+    Args:
+        numero (str): Cadena que representa un número binario negativo.
+
+    Returns:
+        int: Valor decimal equivalente.
+    """
+    decimal: int = 0
+    binario = complementoA2(binario)
+
+    for i in range(len(binario), 0, -1):
+        decimal += int(binario[i-1]) * (2 ** (len(binario)-i))
+    return decimal * -1
+
+
+
 def rellenar_con_ceros_izquierda(numero: str, longitud: int) -> str:
     """
     Rellena con ceros a la izquierda para igualar la longitud de los números binarios.
@@ -231,27 +250,36 @@ def restar(numeros: list[str]):
     resultado : str = ""
 
     binario1, binario2 = igualar_numeros(binario1, binario2)
+
+    def comprobar(binario1,binario2, resultado):
+        decimal1 = convertir_a_decimal(binario1)
+        decimal2 = convertir_a_decimal(binario2)
+        total = decimal1 - decimal2
+        if decimal1 >= decimal2:
+            resultado_decimal = convertir_a_decimal(resultado)
+        else:
+            resultado_decimal = convertir_a_dec_binario_neg(resultado)
+        if total == resultado_decimal:
+                return "Resta verificada..."    
+
     if binario1 >= binario2:
         resultado = sumar([binario1, complementoA2(binario2)])
         if len(resultado) > len(binario2):
             resultado = resultado[1:]
+            print(comprobar(binario1,binario2,resultado))
             return resultado.lstrip('0') or "0"
     else:
         resultado = sumar([binario1, complementoA2(binario2)])
         if len(resultado) > len(binario2):
             resultado1 = complementoA2(resultado[1:])
+            print(comprobar(binario1,binario2,resultado))
             return resultado1.lstrip('0') or "0"
         else:
            resultado1 = complementoA2(resultado)
+           print(comprobar(binario1,binario2,resultado))
            return resultado1.lstrip('0') or "0"
 
-
-    decimal1 = convertir_a_decimal(binario1)
-    decimal2 = convertir_a_decimal(binario2)
-    total = decimal1 - decimal2
-    resultado_decimal = convertir_a_decimal(resultado[::-1])
-    if total == resultado_decimal:
-        print("Resta verificada...")
+        
 
 def multiplicar(numeros: list[str]) -> str:
     """
@@ -370,6 +398,9 @@ def calculadora():
 
 calculadora()
 
+
+
+"""
 # TEST CASES
 
 # Caso 1: Suma básica
@@ -439,3 +470,4 @@ numeros = ["1101", "111101"]  # 13 / 61 = 0,2131147540983607 (resultado entero)
 resultado = dividir(numeros)
 print(resultado)
 assert resultado == "0", f"Error: Se esperaba '0' pero obtuvo '{resultado}'"
+"""
