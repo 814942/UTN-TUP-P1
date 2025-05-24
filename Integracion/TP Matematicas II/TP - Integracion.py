@@ -16,6 +16,15 @@ def suma_dni(dni: int):
   
   # Diferencia de dos conjuntos A - B
 
+def union(dnis: list[int]) -> list[int]:
+  if not dnis:
+    return []
+
+  conjunto_unico = set()
+  for dni in dnis:
+    conjunto_unico.update(generador_de_conjuntos(dni))
+
+  return list(conjunto_unico)
 
 def dif_conjuntos():
   """
@@ -71,10 +80,16 @@ def dif_conjuntos_op1(lista_dni: list):
 # definido como x/x ∈ Z y 0<= x <= 9, no es un conjunto vacío.
 
 
-def complemento_U(lista_dni):
-  X = union_de_conjuntos(lista_dni) # reemplazar por el nombre de la función union que hizo Pablo
-
-
+def complemento_U(lista_dni)-> bool:
+  x = union(lista_dni) 
+  c=[]
+  for i in range (10):
+    if i not in x:
+      c.append(i)
+  if c == []:
+    return False
+  else:
+    return True
 
 
 
@@ -86,5 +101,20 @@ def complemento_U(lista_dni):
 
 
 if __name__ == "__main__":
-  print(f"La diferencia del conjunto A - B es igual a {dif_conjuntos()}")
-  print(f"La diferencia del conjunto A - B es igual a {dif_conjuntos_op1([35550208, 23089140])}")
+  #list_dni=[23089140, 19118232, 35550208, 32313489, 33814942]
+  list_dni=[23089140, 19118232, 35550208, 32313489, 33814942, 12678912]
+  #print(f"La diferencia del conjunto A - B es igual a {dif_conjuntos()}")
+  
+  print(f"La diferencia del conjunto A - B es igual a {dif_conjuntos_op1(list_dni)}")
+  
+  print(f"Es {complemento_U(list_dni)} que el complemento de X no es un conjunto vacio")
+
+
+"""
+JUAN J: 23089140
+ISRAEL I: 19118232
+CRISTIAN C: 35550208
+FELIPE F: 32313489
+PABLO P: 33814942
+
+"""
