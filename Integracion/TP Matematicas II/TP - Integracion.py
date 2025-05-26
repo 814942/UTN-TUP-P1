@@ -65,8 +65,6 @@ def nacimientos():
     print(f"({anio}, {edad})", end=" ")
     print("\n")
 
-nacimientos()
-  
 # Union de conjuntos 
 def union(dnis: list[int]) -> list[int]:
   if not dnis:
@@ -98,7 +96,6 @@ def diferencia(lista_dni: list) -> list:
       d.append(a[i])
   return d
 
-
 # Complemento del conjunto Union.
 def complemento_U(lista_dni)-> bool:
   """
@@ -121,4 +118,17 @@ def complemento_U(lista_dni)-> bool:
     return False
   else:
     return True
-  
+
+# Interseccion
+def interseccion(dnis: list[int]) -> list[int]:
+  if not dnis:
+    return []
+
+  conjunto_comun = set(generador_de_conjuntos(dnis[0]))
+
+  for dni in dnis[1:]:
+    conjunto_comun.intersection_update(generador_de_conjuntos(dni))
+
+  return list(conjunto_comun)
+
+nacimientos()
