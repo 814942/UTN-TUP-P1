@@ -130,7 +130,7 @@ def interseccion(dnis: list[int]) -> list[int]:
 
     return list(conjunto_comun)
 
-# NUEVA FUNCIÓN: Conteo de frecuencia de dígitos en un DNI
+# Funcion: Conteo de frecuencia de dígitos en un DNI
 def frecuencia_digitos(dni: int) -> dict:
     """
     Cuenta la frecuencia de cada dígito (0-9) en el DNI dado.
@@ -155,6 +155,42 @@ def mostrar_frecuencia(dni: int):
     print()
 
 # ----------------------------------------
+
+# FUNCIÓN: Diferencia Simétrica
+def diferencia_simetrica(lista_dni: list) -> list:
+    """
+    Realiza la diferencia simétrica de dos conjuntos A y B.
+    La diferencia simétrica incluye elementos que están en A o en B, pero no en ambos.
+
+    Args:
+        lista_dni (list): Lista con los documentos ingresados por el usuario (se toman los dos primeros).
+
+    Returns:
+        list: Conjunto formado por la diferencia simétrica de A y B.
+    """
+    #Verifica si hay al menos dos DNI en la lista. Si no, retorna una lista vacía
+    if len(lista_dni) < 2:
+        return []
+#Se utilizan los dos primeros DNIs de lista_dni para generar sus respectivos conjuntos de dígitos 
+# únicos usando función generador_de_conjuntos.
+    conjunto_a = set(generador_de_conjuntos(lista_dni[0]))
+    conjunto_b = set(generador_de_conjuntos(lista_dni[1]))
+
+    # La diferencia simétrica se puede calcular como (A - B) U (B - A)
+    # O de forma más eficiente con el método .symmetric_difference() de los conjuntos
+    diferencia_simetrica_set = conjunto_a.symmetric_difference(conjunto_b)
+
+    return sorted(list(diferencia_simetrica_set))
+
+#Se añadió una línea en la función main() para demostrar su uso:
+#if len(dnis) >= 2:
+#  print(f"Diferencia simétrica entre los dígitos de {dnis[0]} y {dnis[1]}:", diferencia_simetrica(dnis))
+
+# ----------------------------------------
+# Ejemplo de uso (puedes comentar o adaptar según tu necesidad)
+
+
+
 # Ejemplo de uso (puedes comentar o adaptar según tu necesidad)
 
 # Pedimos una lista de DNIs para trabajar
@@ -192,4 +228,72 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+###########################################
+# main con opciones de funciones
+###########################################
+
+def main():
+    while True:
+        print("\n--- MENÚ DE OPERACIONES CON CONJUNTOS ---")
+        print("1. Unión")
+        print("2. Intersección")
+        print("3. Diferencia (A - B)")
+        print("4. Diferencia simétrica (A ∆ B)")
+        print("5. Operaciones con años de nacimiento")
+        print("6. Salir")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion in {"1", "2", "3", "4"}:
+            dnis = pedir_dnis()
+
+            print("\n--- CONJUNTOS GENERADOS ---")
+            for dni in dnis:
+                conjunto = generador_de_conjuntos(dni)
+                print(f"DNI {dni} → {conjunto}")
+                print(f"Frecuencia de dígitos:")
+                mostrar_frecuencia(dni)
+                print(f"Suma total de dígitos: {suma_dni(dni)}\n")
+
+            if opcion == "1":
+                resultado = union(dnis)
+                print("Unión de todos los conjuntos:", resultado)
+                if len(resultado) >= 7:
+                    print("Expresión lógica: Alta diversidad numérica.")
+                else:
+                    print("No hay alta diversidad.")
+
+            elif opcion == "2":
+                resultado = interseccion(dnis)
+                print("Intersección de los conjuntos:", resultado)
+                if len(resultado) == 1:
+                    print("Expresión lógica: Hay un dígito representativo del grupo.")
+                else:
+                    print("No hay un único dígito representativo.")
+
+            elif opcion == "3":
+                if len(dnis) >= 2:
+                    resultado = diferencia(dnis)
+                    print(f"→ Diferencia de {dnis[0]} - {dnis[1]}:", resultado)
+                else:
+                    print("Se necesitan al menos dos DNIs.")
+
+            elif opcion == "4":
+                if len(dnis) >= 2:
+                    resultado = diferencia_simetrica(dnis)
+                    print(f"Diferencia simétrica entre {dnis[0]} y {dnis[1]}:", resultado)
+                    if len(resultado) % 2 == 0:
+                        print("Expresión lógica: El resultado es par.")
+                    else:
+                        print("El resultado es impar.")
+                else:
+                    print("Se necesitan al menos dos DNIs.")
+        elif opcion == "5":
+            nacimientos()
+        elif opcion == "6":
+            print("Hasta luego")
+            break
+        else:
+            print("Opción inválida. Intentalo nuevamente.")
 
