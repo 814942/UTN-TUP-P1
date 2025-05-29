@@ -213,11 +213,12 @@ def main():
         print("2. Intersección")
         print("3. Diferencia (A - B)")
         print("4. Diferencia simétrica (A ∆ B)")
-        print("5. Operaciones con años de nacimiento")
-        print("6. Salir")
+        print("5. Complemento U")
+        print("6. Operaciones con años de nacimiento")
+        print("7. Salir\n---")
         opcion = input("Seleccione una opción: ")
 
-        if opcion in {"1", "2", "3", "4"}:
+        if opcion in {"1", "2", "3", "4", "5"}:
             dnis = pedir_dnis(opcion)
 
             print("\n--- CONJUNTOS GENERADOS ---")
@@ -247,7 +248,7 @@ def main():
             elif opcion == "3":
                 if len(dnis) >= 2:
                     resultado = diferencia(dnis)
-                    print(f"→ Diferencia de {dnis[0]} - {dnis[1]}:", resultado)
+                    print(f"Diferencia de {dnis[0]} - {dnis[1]}:", resultado)
                 else:
                     print("Se necesitan al menos dos DNIs.")
 
@@ -261,10 +262,14 @@ def main():
                         print("El resultado es impar.")
                 else:
                     print("Se necesitan al menos dos DNIs.")
-        elif opcion == "5":
-            nacimientos()
+            elif opcion == "5":
+                if len(dnis) >=2:
+                    resultado = complemento_U (dnis)
+                    print(f"Complemento de los DNIs {dnis}:", resultado)
         elif opcion == "6":
-            print("Hasta luego")
+            nacimientos()
+        elif opcion == "7":
+            print("Fin del programa.")
             break
         else:
             print("Opción inválida. Intentalo nuevamente.")
