@@ -154,8 +154,6 @@ def mostrar_frecuencia(dni: int):
         print(f"Dígito {digito}: {cantidad} vez/veces")
     print()
 
-# ----------------------------------------
-
 # FUNCIÓN: Diferencia Simétrica
 def diferencia_simetrica(lista_dni: list) -> list:
     """
@@ -182,57 +180,31 @@ def diferencia_simetrica(lista_dni: list) -> list:
 
     return sorted(list(diferencia_simetrica_set))
 
-#Se añadió una línea en la función main() para demostrar su uso:
-#if len(dnis) >= 2:
-#  print(f"Diferencia simétrica entre los dígitos de {dnis[0]} y {dnis[1]}:", diferencia_simetrica(dnis))
-
-# ----------------------------------------
-# Ejemplo de uso (puedes comentar o adaptar según tu necesidad)
-
-
-
-# Ejemplo de uso (puedes comentar o adaptar según tu necesidad)
-
 # Pedimos una lista de DNIs para trabajar
-def pedir_dnis():
+def pedir_dnis(opcion):
     dnis = []
     print("Ingrese los DNIs de los integrantes (ingrese 'fin' para terminar):")
-    while True:
-        entrada = input("DNI (o 'fin' para terminar): ")
-        if entrada.lower() == 'fin':
-            if len(dnis) < 2:
-                print("Debe ingresar al menos dos DNIs.")
+    if opcion == "1" or opcion == "2":
+        while True:
+            entrada = input("DNI (o 'fin' para terminar): ")
+            if entrada.lower() == 'fin':
+                if len(dnis) < 2:
+                    print("Debe ingresar al menos dos DNIs.")
+                    continue
+                break
+            if not entrada.isdigit():
+                print("Por favor ingrese solo números.")
                 continue
-            break
-        if not entrada.isdigit():
-            print("Por favor ingrese solo números.")
-            continue
-        dnis.append(int(entrada))
+            dnis.append(int(entrada))
+    else:
+        while len(dnis) < 2:
+            entrada = input("DNI: ")
+            if not entrada.isdigit():
+                print("Por favor ingrese solo números.")
+                continue
+            dnis.append(int(entrada))
+
     return dnis
-
-def main():
-    dnis = pedir_dnis()
-
-    # Mostrar frecuencias para cada DNI
-    for dni in dnis:
-        mostrar_frecuencia(dni)
-
-    # Otros procesos que ya tenés pueden agregarse acá
-
-    # Por ejemplo: cálculo de unión e intersección
-    print("Unión de dígitos:", union(dnis))
-    print("Intersección de dígitos:", interseccion(dnis))
-
-    # Llamamos a la función de años
-    nacimientos()
-
-if __name__ == "__main__":
-    main()
-
-
-###########################################
-# main con opciones de funciones
-###########################################
 
 def main():
     while True:
@@ -246,7 +218,7 @@ def main():
         opcion = input("Seleccione una opción: ")
 
         if opcion in {"1", "2", "3", "4"}:
-            dnis = pedir_dnis()
+            dnis = pedir_dnis(opcion)
 
             print("\n--- CONJUNTOS GENERADOS ---")
             for dni in dnis:
@@ -297,3 +269,5 @@ def main():
         else:
             print("Opción inválida. Intentalo nuevamente.")
 
+if __name__ == "__main__":
+    main()
