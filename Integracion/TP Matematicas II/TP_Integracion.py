@@ -1,4 +1,11 @@
 # Generación automática de los conjuntos de dígitos únicos.
+exp_log = "X’ != ∅,  donde X=union de los conjuntos generados y U={x∣x ∈ Z y 0 ≤ x ≤ 9}." \
+"En lenguaje natural: El complemento del conjunto X, siendo X la unión de los conjuntos generados a partir de los DNI ingresados," \
+" respecto al conjunto universal definido como U={0,1,2,3,4,5,6,7,8,9}, no es un conjunto vacío."
+
+exp_log2="∣A∣=1. En lenguaje natural: Siendo el conjunto A la intersección de los todos los conjuntos formados con los DNI " \
+"ingresados, existe un único dígito representativo"
+
 def generador_de_conjuntos(dni: int):
     conjuntos: list[int] = []
     for i in range(10):
@@ -198,7 +205,7 @@ def pedir_dnis(opcion):
             dnis.append(int(entrada))
     else:
         while len(dnis) < 2:
-            entrada = input("DNI: ")
+            entrada = input("Ingrese el DNI: ")
             if not entrada.isdigit():
                 print("Por favor ingrese solo números.")
                 continue
@@ -213,62 +220,50 @@ def main():
         print("2. Intersección")
         print("3. Diferencia (A - B)")
         print("4. Diferencia simétrica (A ∆ B)")
-        print("5. Complemento U")
-        print("6. Operaciones con años de nacimiento")
-        print("7. Salir\n---")
+        print("5. Operaciones con años de nacimiento")
+        print("6. Salir\n---")
         opcion = input("Seleccione una opción: ")
 
-        if opcion in {"1", "2", "3", "4", "5"}:
+        if opcion in {"1", "2", "3", "4"}:
             dnis = pedir_dnis(opcion)
 
             print("\n--- CONJUNTOS GENERADOS ---")
             for dni in dnis:
                 conjunto = generador_de_conjuntos(dni)
-                print(f"DNI {dni} → {conjunto}")
-                print(f"Frecuencia de dígitos:")
+                print(f"El DNI {dni}, forma el conjunto: {conjunto}")
+                print(f"\nFrecuencia de dígitos:\n")
                 mostrar_frecuencia(dni)
-                print(f"Suma total de dígitos: {suma_dni(dni)}\n")
+                print(f"Suma total de dígitos: {suma_dni(dni)}")
 
             if opcion == "1":
                 resultado = union(dnis)
-                print("Unión de todos los conjuntos:", resultado)
-                if len(resultado) >= 7:
-                    print("Expresión lógica: Alta diversidad numérica.")
-                else:
-                    print("No hay alta diversidad.")
+                print("\nUnión de todos los conjuntos:", resultado)
+                print("\nExpresion lógica\n")
+                print(exp_log)
+                print(f"\nEl resultado de la expresion es: {complemento_U(dnis)}")
 
             elif opcion == "2":
                 resultado = interseccion(dnis)
-                print("Intersección de los conjuntos:", resultado)
+                print("\nIntersección de los conjuntos:", resultado)
+                print("\nExpresion lógica\n")
+                print(exp_log2)
                 if len(resultado) == 1:
-                    print("Expresión lógica: Hay un dígito representativo del grupo.")
+                    print(f"\nEl resultado de la expresion es: True.")
                 else:
-                    print("No hay un único dígito representativo.")
+                    print(f"\nEl resultado de la expresion es: False.")
 
             elif opcion == "3":
-                if len(dnis) >= 2:
-                    resultado = diferencia(dnis)
-                    print(f"Diferencia de {dnis[0]} - {dnis[1]}:", resultado)
-                else:
-                    print("Se necesitan al menos dos DNIs.")
-
+                resultado = diferencia(dnis)
+                print(f"Diferencia de {dnis[0]} - {dnis[1]}:", resultado)
+                
             elif opcion == "4":
-                if len(dnis) >= 2:
-                    resultado = diferencia_simetrica(dnis)
-                    print(f"Diferencia simétrica entre {dnis[0]} y {dnis[1]}:", resultado)
-                    if len(resultado) % 2 == 0:
-                        print("Expresión lógica: El resultado es par.")
-                    else:
-                        print("El resultado es impar.")
-                else:
-                    print("Se necesitan al menos dos DNIs.")
-            elif opcion == "5":
-                if len(dnis) >=2:
-                    resultado = complemento_U (dnis)
-                    print(f"Complemento de los DNIs {dnis}:", resultado)
-        elif opcion == "6":
+                resultado = diferencia_simetrica(dnis)
+                print(f"Diferencia simétrica entre {dnis[0]} y {dnis[1]}:", resultado)
+                
+        elif opcion == "5":
             nacimientos()
-        elif opcion == "7":
+            
+        elif opcion == "6":
             print("Fin del programa.")
             break
         else:
