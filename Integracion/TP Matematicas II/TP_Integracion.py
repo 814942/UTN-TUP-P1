@@ -248,9 +248,9 @@ def main():
                 print("\nExpresion lógica\n")
                 print(exp_log2)
                 if len(resultado) == 1:
-                    print(f"\nEl resultado de la expresion es: True.")
+                    print(f"\nEl resultado de la expresion es: Verdadero.")
                 else:
-                    print(f"\nEl resultado de la expresion es: False.")
+                    print(f"\nEl resultado de la expresion es: Falso.")
 
             elif opcion == "3":
                 resultado = diferencia(dnis)
