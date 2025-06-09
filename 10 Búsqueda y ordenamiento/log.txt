@@ -1,0 +1,329 @@
+Analisis de tiempo de respuesta
+
+# BUBBLE SORT - Iteracion sobre 1000 productos
+# Llamada numero: 1
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.34870386123657227
+# Llamada numero: 2
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.24152731895446777
+# Llamada numero: 3
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.21282720565795898
+# Llamada numero: 4
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.19121503829956055
+# Llamada numero: 5
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.188018798828125
+# Llamada numero: 6
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.18601059913635254
+# Llamada numero: 7
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.18237018585205078
+# Llamada numero: 8
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.16812658309936523
+# Llamada numero: 9
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.20550298690795898
+# Llamada numero: 10
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 0.1798551082611084
+
+#########################################################
+
+# BUBBLE SORT V2 - Iteracion sobre 1000 productos
+# Llamada numero: 1
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.23655915260314941
+# Llamada numero: 2
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 3
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 4
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 5
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0009930133819580078
+# Llamada numero: 6
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0005393028259277344
+# Llamada numero: 7
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 8
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 9
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+# Llamada numero: 10
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0
+
+#########################################################
+
+# MERGE SORT - Iteracion sobre 1000 productos
+# Llamada numero: 1
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.003905057907104492
+# Llamada numero: 2
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.003718852996826172
+# Llamada numero: 3
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.0040018558502197266
+# Llamada numero: 4
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.003498077392578125
+# Llamada numero: 5
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.0029952526092529297
+# Llamada numero: 6
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.004002809524536133
+# Llamada numero: 7
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.004001617431640625
+# Llamada numero: 8
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.004155635833740234
+# Llamada numero: 9
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.0040929317474365234
+# Llamada numero: 10
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.004076719284057617
+
+#########################################################
+
+# BUBBLE SORT - Iteracion sobre 53300 productos
+# Tiempo de busqueda binaria: 1009.3633146286011 / 16min
+
+##########################################################
+
+# BUBBLE SORT - Iteracion sobre 9685 productos
+# Llamada numero: 1
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 26.0266432762146
+# Llamada numero: 2     
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 20.995359659194946
+# Llamada numero: 3     
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 21.282984972000122
+# Llamada numero: 4     
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 21.049756288528442
+# Llamada numero: 5
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 20.853453159332275
+# Llamada numero: 6
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 22.250519514083862
+# Llamada numero: 7
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 21.950668334960938
+# Llamada numero: 8
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 21.29769992828369
+# Llamada numero: 9
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 25.802955865859985
+# Llamada numero: 10
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 21.42188000679016
+
+##########################################################
+
+# BUBBLE SORT V2 - Iteracion sobre 9685 productos
+# Llamada numero: 1
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 26.580780744552612
+# Llamada numero: 2
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0019989013671875
+# Llamada numero: 3
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.002001047134399414
+# Llamada numero: 4
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0030007362365722656
+# Llamada numero: 5
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0019981861114501953
+# Llamada numero: 6
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0028629302978515625
+# Llamada numero: 7
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0025663375854492188
+# Llamada numero: 8
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.0027730464935302734
+# Llamada numero: 9
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.002839803695678711
+# Llamada numero: 10
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.003940582275390625
+
+##########################################################
+
+# MERGE SORT - Iteracion sobre 9685 productos
+# Llamada numero: 1
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.05988287925720215
+# Llamada numero: 2
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.0509335994720459
+# Llamada numero: 3
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.05591917037963867
+# Llamada numero: 4
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.05623126029968262
+# Llamada numero: 5
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.05163168907165527
+# Llamada numero: 6
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.046007633209228516
+# Llamada numero: 7
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.04870200157165527
+# Llamada numero: 8
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.04844260215759277
+# Llamada numero: 9
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.05233335494995117
+# Llamada numero: 10
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.052924394607543945
+
+#########################################################
+
+# BUBBLE SORT - Iteracion sobre 26202 productos
+# Llamada numero: 1
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 231.9274868965149
+# Llamada numero: 2
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 229.29557609558105
+# Llamada numero: 3
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 208.35157680511475
+# Llamada numero: 4
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 227.8918046951294
+# Llamada numero: 5
+# Inicio del burbujeo...
+# Tiempo de busqueda binaria: 233.59161734580994
+
+#########################################################
+
+# BUBBLE SORT V2 - Iteracion sobre 26202 productos
+# Llamada numero: 1
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 230.65899109840393
+# Llamada numero: 2
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.009651899337768555
+# Llamada numero: 3
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.010820150375366211
+# Llamada numero: 4
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.014017343521118164
+# Llamada numero: 5
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.01052999496459961
+# Llamada numero: 6
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.01049041748046875
+# Llamada numero: 7
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.01228642463684082
+# Llamada numero: 8
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.01273036003112793
+# Llamada numero: 9
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.010250329971313477
+# Llamada numero: 10
+# Inicio del burbujeo optimizado...
+# Tiempo de busqueda binaria: 0.01068115234375
+
+#########################################################
+
+# MERGE SORT - Iteracion sobre 26202 productos
+# Llamada numero: 1
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.1806783676147461
+# Llamada numero: 2
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.1529994010925293
+# Llamada numero: 3
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.145308256149292
+# Llamada numero: 4
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.1687016487121582
+# Llamada numero: 5
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.14918994903564453
+# Llamada numero: 6
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.1466219425201416
+# Llamada numero: 7
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.14768600463867188
+# Llamada numero: 8
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.14564108848571777
+# Llamada numero: 9
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.1521317958831787
+# Llamada numero: 10
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.17704129219055176
+
+#########################################################
+
+# MERGE SORT - Iteracion sobre 51764 productos
+# Llamada numero: 1
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.41782355308532715
+# Llamada numero: 2
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.33843541145324707
+# Llamada numero: 3
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.3503096103668213
+# Llamada numero: 4
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.3347971439361572
+# Llamada numero: 5
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.34550905227661133
+# Llamada numero: 6
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.3374972343444824
+# Llamada numero: 7
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.34584498405456543
+# Llamada numero: 8
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.3451876640319824
+# Llamada numero: 9
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.32242703437805176
+# Llamada numero: 10
+# Inicio de la fusion...
+# Tiempo de busqueda binaria: 0.3451230525970459
